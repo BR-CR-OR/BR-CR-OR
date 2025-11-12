@@ -1,15 +1,15 @@
-// Preloader
+// ========== PRELOADER ==========
 const preloader = document.getElementById("preloader");
 const enterBtn = document.getElementById("enterBtn");
 
 enterBtn.addEventListener("click", () => {
   preloader.classList.add("hidden");
   document.body.classList.remove("locked");
-  // Iniciar animaciones de habilidades después de cargar
+  // Start skill bar animations after loading
   setTimeout(animateSkillBars, 500);
 });
 
-// Navbar toggle
+// ========== NAVBAR TOGGLE ==========
 const menuToggle = document.getElementById("menu-toggle");
 const navLinks = document.getElementById("nav-links");
 
@@ -17,7 +17,7 @@ menuToggle.addEventListener("click", () => {
   navLinks.classList.toggle("show");
 });
 
-// Cerrar menú al hacer clic en un enlace
+// Close menu when clicking a link
 document.querySelectorAll('.nav-links a').forEach(link => {
   link.addEventListener('click', () => {
     if (navLinks.classList.contains('show')) {
@@ -26,10 +26,10 @@ document.querySelectorAll('.nav-links a').forEach(link => {
   });
 });
 
-// Dark mode
+// ========== DARK MODE ==========
 const darkToggle = document.getElementById("darkModeToggle");
 
-// Verificar si hay una preferencia guardada
+// Check for saved preference
 if (localStorage.getItem('darkMode') === 'enabled') {
   document.body.classList.add('dark-mode');
   darkToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
@@ -38,7 +38,7 @@ if (localStorage.getItem('darkMode') === 'enabled') {
 darkToggle.addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
   
-  // Guardar preferencia
+  // Save user preference
   if (document.body.classList.contains("dark-mode")) {
     localStorage.setItem('darkMode', 'enabled');
     darkToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
@@ -48,12 +48,12 @@ darkToggle.addEventListener("click", () => {
   }
 });
 
-// Gallery data with URL
+// ========== PROJECT GALLERY DATA ==========
 const projectData = {
   farmaket: {
     image: "New folder/image-removebg-preview (1).png",
     description:
-      "Farmaket ayuda a los usuarios a encontrar medicamentos al mejor precio. Este proyecto fue desarrollado durante un hackathon y representa mi primera experiencia significativa en desarrollo de soluciones tecnológicas. <a href='https://youtu.be/yfu0rXcjvBg' class='project-link' target='_blank'>Visitar Proyecto</a>",
+      "Farmaket helps users find medicines at the best price. This project was developed during a hackathon and represents my first meaningful experience in creating technological solutions. <a href='https://youtu.be/yfu0rXcjvBg' class='project-link' target='_blank'>View Project</a>",
     gallery: [
       "New folder/farmarket2.png",
       "New folder/farmarket3.png",
@@ -63,7 +63,7 @@ const projectData = {
   codeharu1: {
     image: "New folder/codeharu.png",
     description:
-      "Codeharu es una plataforma educativa que enseña programación de manera interactiva. Desarrollado con fines educativos en ¡Superate! ADOC para hacer la programación accesible para niños. <a href='https://codeharu.infinityfreeapp.com/' class='project-link' target='_blank'>Visitar Codeharu</a>",
+      "Codeharu is an educational platform that teaches programming interactively. It was developed at ¡Superate! ADOC to make coding accessible to children. <a href='https://codeharu.infinityfreeapp.com/' class='project-link' target='_blank'>Visit Codeharu</a>",
     gallery: [
       "New folder/codeharu1.png",
       "New folder/codeharu2.png",
@@ -73,7 +73,7 @@ const projectData = {
   codeharu2: {
     image: "New folder/image-removebg-preview.png",
     description:
-      "Codeharu 2 expandió el proyecto original con nuevos cuestionarios y lecciones. Implementamos mejoras en la interfaz y funcionalidades basadas en el feedback recibido. <a href='https://codeharuadoc.infinityfreeapp.com/?i=1' class='project-link' target='_blank'>Ver Codeharu 2</a>",
+      "Codeharu 2 expanded the original project with new quizzes and lessons. We implemented UI and functionality improvements based on feedback. <a href='https://codeharuadoc.infinityfreeapp.com/?i=1' class='project-link' target='_blank'>See Codeharu 2</a>",
     gallery: [
       "New folder/codeharuadoc1.png",
       "New folder/codeharuadoc2.png",
@@ -82,7 +82,7 @@ const projectData = {
   }
 };
 
-// Open project gallery
+// ========== OPEN PROJECT GALLERY ==========
 function openProject(id) {
   const data = projectData[id];
   if (!data) return;
@@ -107,7 +107,7 @@ document.getElementById("closeGallery").addEventListener("click", () => {
   document.getElementById("project-gallery").classList.add("hidden");
 });
 
-// Image viewer logic
+// ========== IMAGE VIEWER ==========
 const viewer = document.getElementById("imageViewer");
 const viewerImg = document.getElementById("viewerImg");
 const prevBtn = document.getElementById("prevImg");
@@ -141,7 +141,7 @@ viewer.addEventListener("click", (e) => {
   if (e.target === viewer) viewer.style.display = "none";
 });
 
-// Smooth scrolling for navigation links
+// ========== SMOOTH SCROLLING ==========
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
@@ -154,7 +154,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         behavior: 'smooth'
       });
       
-      // Cerrar menú móvil si está abierto
+      // Close mobile menu if open
       if (navLinks.classList.contains('show')) {
         navLinks.classList.remove('show');
       }
@@ -162,10 +162,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// ========== SCROLL TO TOP FUNCTIONALITY ==========
+// ========== SCROLL TO TOP BUTTON ==========
 const scrollToTopBtn = document.getElementById('scrollToTop');
 
-// Mostrar u ocultar el botón basado en la posición de scroll
+// Show or hide button based on scroll position
 window.addEventListener('scroll', () => {
   if (window.pageYOffset > 300) {
     scrollToTopBtn.classList.add('visible');
@@ -174,7 +174,7 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// Scroll suave al hacer clic en el botón
+// Smooth scroll when clicking button
 scrollToTopBtn.addEventListener('click', () => {
   window.scrollTo({
     top: 0,
@@ -182,7 +182,7 @@ scrollToTopBtn.addEventListener('click', () => {
   });
 });
 
-// ========== ANIMACIÓN DE BARRAS DE HABILIDADES ==========
+// ========== SKILL BAR ANIMATION ==========
 function animateSkillBars() {
   const skillBars = document.querySelectorAll('.skill-progress');
   
@@ -192,7 +192,7 @@ function animateSkillBars() {
   });
 }
 
-// ========== FORMULARIO DE CONTACTO CON EMAILJS ==========
+// ========== CONTACT FORM WITH EMAILJS ==========
 const contactForm = document.getElementById('contactForm');
 const submitText = document.getElementById('submitText');
 const submitLoader = document.getElementById('submitLoader');
@@ -200,11 +200,11 @@ const submitLoader = document.getElementById('submitLoader');
 contactForm.addEventListener('submit', function(e) {
   e.preventDefault();
   
-  // Mostrar loader
-  submitText.textContent = 'Enviando...';
+  // Show loader
+  submitText.textContent = 'Sending...';
   submitLoader.classList.remove('hidden');
   
-  // Obtener datos del formulario
+  // Get form data
   const formData = {
     name: document.getElementById('name').value,
     email: document.getElementById('email').value,
@@ -212,56 +212,55 @@ contactForm.addEventListener('submit', function(e) {
     message: document.getElementById('message').value
   };
   
-  // Enviar email usando EmailJS
-  emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formData) // Reemplaza con tus IDs
+  // Send email via EmailJS
+  emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formData)
     .then(function(response) {
       console.log('SUCCESS!', response.status, response.text);
       
-      // Mostrar mensaje de éxito
-      showMessage('¡Mensaje enviado con éxito! Te responderé pronto.', 'success');
+      // Success message
+      showMessage('Message sent successfully! I’ll get back to you soon.', 'success');
       
-      // Restablecer formulario
+      // Reset form
       contactForm.reset();
       
-      // Restablecer botón
-      submitText.textContent = 'Enviar Mensaje';
+      // Reset button
+      submitText.textContent = 'Send Message';
       submitLoader.classList.add('hidden');
     }, function(error) {
       console.log('FAILED...', error);
       
-      // Mostrar mensaje de error
-      showMessage('Error al enviar el mensaje. Por favor, inténtalo de nuevo.', 'error');
+      // Error message
+      showMessage('Failed to send message. Please try again.', 'error');
       
-      // Restablecer botón
-      submitText.textContent = 'Enviar Mensaje';
+      // Reset button
+      submitText.textContent = 'Send Message';
       submitLoader.classList.add('hidden');
     });
 });
 
-// Función para mostrar mensajes
+// Show message function
 function showMessage(text, type) {
-  // Eliminar mensajes anteriores
+  // Remove previous messages
   const existingMessage = document.querySelector('.message');
   if (existingMessage) {
     existingMessage.remove();
   }
   
-  // Crear nuevo mensaje
+  // Create new message
   const message = document.createElement('div');
   message.className = `message ${type}`;
   message.textContent = text;
   
-  // Insertar antes del formulario
+  // Insert before form
   contactForm.parentNode.insertBefore(message, contactForm);
   
-  // Eliminar mensaje después de 5 segundos
+  // Remove message after 5 seconds
   setTimeout(() => {
     message.remove();
   }, 5000);
 }
 
-// ========== ANIMACIÓN DE ELEMENTOS AL HACER SCROLL ==========
-// Observador de intersección para animar elementos al entrar en vista
+// ========== SCROLL ANIMATION FOR ELEMENTS ==========
 const observerOptions = {
   threshold: 0.1,
   rootMargin: '0px 0px -50px 0px'
@@ -275,28 +274,25 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
-// Observar elementos para animación
+// Observe elements
 document.addEventListener('DOMContentLoaded', () => {
-  // Observar tarjetas
   const cards = document.querySelectorAll('.card');
   cards.forEach(card => {
     observer.observe(card);
   });
   
-  // Observar secciones
   const sections = document.querySelectorAll('section');
   sections.forEach(section => {
     observer.observe(section);
   });
   
-  // Observar elementos de habilidades
   const skillItems = document.querySelectorAll('.skill-item');
   skillItems.forEach(item => {
     observer.observe(item);
   });
 });
 
-// ========== EFECTOS HOVER MEJORADOS PARA TARJETAS ==========
+// ========== HOVER EFFECTS FOR CARDS ==========
 const cards = document.querySelectorAll('.card');
 cards.forEach(card => {
   card.addEventListener('mouseenter', function() {
@@ -310,11 +306,8 @@ cards.forEach(card => {
   });
 });
 
-// ========== INICIALIZACIÓN ADICIONAL ==========
-
-// Inicializar todos los observadores después de cargar la página
+// ========== FINAL INITIALIZATION ==========
 window.addEventListener('load', () => {
-  // Asegurar que las imágenes estén completamente cargadas
   const images = document.querySelectorAll('img');
   let loadedImages = 0;
   const totalImages = images.length;
@@ -336,7 +329,7 @@ window.addEventListener('load', () => {
     document.body.classList.add('all-content-loaded');
   }
   
-  // Inicializar animación de barras de habilidades si el preloader ya se cerró
+  // Start skill bar animation if preloader is already closed
   if (preloader.classList.contains('hidden')) {
     animateSkillBars();
   }
